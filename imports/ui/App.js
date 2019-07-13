@@ -5,10 +5,10 @@ import CastomLayout from "./CastomLayout";
 import {Button} from "antd";
 import SiderDemo from "./SiderDemo";
 import WrappedHorizontalLoginForm from "./registerForm";
-
+import { withTracker } from 'meteor/react-meteor-data';
 
 // App component - represents the whole app
-export default class App extends Component {
+class App extends Component {
     getTasks() {
         return [
             { _id: 1, text: 'This is task 1' },
@@ -26,12 +26,20 @@ export default class App extends Component {
 
 
     render() {
+        console.log(this.props);
         return (
             <div>
                 <WrappedHorizontalLoginForm/>
+              {this.props.currentUser&&this.props.currentUser.username}
             </div>
         );
     }
 }
 
+
+export default withTracker(() => {
+  return {
+    currentUser: Meteor.user(),
+  };
+})(App);
 

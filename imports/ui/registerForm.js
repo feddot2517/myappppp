@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import { Form, Icon, Input, Button } from 'antd';
+import {Button, Icon, Input} from 'antd';
 
 export default class AuthForm extends React.Component {
 
@@ -9,37 +9,51 @@ export default class AuthForm extends React.Component {
     password: '',
   };
 
-    handleSubmit = e => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values);
-            }
-        });
-    };
+  callback = ans => {
 
-    render() {
+    alert(ans ? ans : "Success")
 
-        return (
-          <div>
-            <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="Username"
-              style={{ width: 300, marginRight: 10 }}
-            />
-            <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              type="password"
-              placeholder="Password"
-              style={{ width: 300, marginRight: 10 }}
-            />
-            <Button type="primary" >
-              Log in
-            </Button>
-            <Button type="primary" style={{  marginLeft: 10 }} >
-              Register
-            </Button>
-          </div>
-        );
-    }
+  };
+
+  handleLogin = () => {
+    const {username, password} = this.state;
+    Meteor.loginWithPassword(username, password, this.callback)
+  };
+  handleRegister = () => {
+    const {username, password} = this.state;
+    Meteor.call('addUser', username, password, this.callback);
+  };
+
+  render() {
+
+    return (
+      <div>
+        <Input
+          prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
+          value={this.state.username}
+          onChange={e => {
+            this.setState({username: e.target.value})
+          }}
+          placeholder="Username"
+          style={{width: 300, marginRight: 10}}
+        />
+        <Input
+          prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
+          type="password"
+          placeholder="Password"
+          value={this.state.password}
+          onChange={e => {
+            this.setState({password: e.target.value})
+          }}
+          style={{width: 300, marginRight: 10}}
+        />
+        <Button type="primary" onClick={this.handleLogin}>
+          Log in
+        </Button>
+        <Button type="primary" onClick={this.handleRegister} style={{marginLeft: 10}}>
+          Register
+        </Button>
+      </div>
+    );
+  }
 }
