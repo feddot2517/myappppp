@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 import Task from './Task.js';
+import CastomLayout from "./CastomLayout";
+import {Button} from "antd";
+
 
 // App component - represents the whole app
 export default class App extends Component {
@@ -22,15 +25,26 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="container">
-                <header>
-                    <h1>Todo List</h1>
-                </header>
-
-                <ul>
-                    {this.renderTasks()}
-                </ul>
-            </div>
+          <div>
+              Hello world
+          </div>
         );
     }
+
+  // render() {
+  //   return (
+  //     <div>
+  //       <CastomLayout>
+  //         <div style={{height:1000}}>
+  //           <Button onClick={()=>{alert('Hi!')}}>Push me</Button>
+  //         </div>
+  //         <div>
+  //           <Button onClick={()=>{alert('Hi!')}}>Push me</Button>
+  //         </div>
+  //       </CastomLayout>
+  //     </div>
+  //   );
+  // }
 }
+
+
