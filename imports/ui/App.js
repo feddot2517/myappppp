@@ -29,13 +29,12 @@ class App extends Component {
         console.log(this.props);
         return (
             <div>
-                <WrappedHorizontalLoginForm/>
-              {this.props.currentUser&&this.props.currentUser.username}
+              {this.props.currentUser? <CastomLayout currentUser={this.props.currentUser}/>:
+                <WrappedHorizontalLoginForm/>}
             </div>
         );
     }
 }
-
 
 export default withTracker(() => {
   return {

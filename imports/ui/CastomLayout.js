@@ -5,34 +5,39 @@ const { Header, Content, Footer } = Layout;
 
 
 export default class CastomLayout extends Component {
+  handleLogOut = e => {
+    Meteor.logout();
+  };
+
   render(){
     return(
       <Layout className="layout">
         <Header>
-          <div className="logo" />
+          <div style={{ float: 'left', color:'white' }}>
+            Hello, {this.props.currentUser&&this.props.currentUser.username}
+          </div>
           <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={['2']}
-            style={{ lineHeight: '64px' }}
+            style={{ lineHeight: '64px', float: 'right' }}
+            onClick={this.handleLogOut}
           >
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
+            <Menu.Item key="1">LogOut</Menu.Item>
           </Menu>
+
         </Header>
         <Content style={{ padding: '0 50px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item>Chat</Breadcrumb.Item>
           </Breadcrumb>
-          <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+          <div style={{ background: '#fff', padding: 24, minHeight: 1000 }}>
 
 
             {this.props.children}
 
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        <Footer style={{ textAlign: 'center' }}>Created FED and JEKKA</Footer>
       </Layout>
     )
   }

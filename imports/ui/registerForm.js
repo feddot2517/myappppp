@@ -21,7 +21,12 @@ export default class AuthForm extends React.Component {
   };
   handleRegister = () => {
     const {username, password} = this.state;
-    Meteor.call('addUser', username, password, this.callback);
+    Meteor.call('addUser', username, password, e => {
+      if(e)
+        this.callback(e);
+      else
+        Meteor.loginWithPassword(username, password, this.callback)
+    });
   };
 
   render() {
