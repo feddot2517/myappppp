@@ -1,20 +1,16 @@
 import { Class } from 'meteor/jagi:astronomy';
 
-
-
 const Message = Class.create({
     name: 'Message',
-    collection: new Meteor.Collection,
+    collection: new Meteor.Collection('message'),
 
     fields: {
-
-        userName: {
+        Name: {
             type: String,
             optional: true,
 
         },
-
-        userMessage: {
+        Message: {
             type: String,
             optional: true,
 
@@ -22,6 +18,5 @@ const Message = Class.create({
     },
 
 });
-
 
 export default Message;

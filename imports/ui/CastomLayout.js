@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import {Layout, Menu, Breadcrumb, Button, Icon} from 'antd';
+import {Layout, Menu, Breadcrumb, Button, Icon, message} from 'antd';
 import { Input } from 'antd';
 import { Table, Divider, Tag } from 'antd';
 import Message from "../models/message";
+import {withTracker} from "meteor/react-meteor-data";
 
 
 const columns = [
@@ -22,20 +23,17 @@ const columns = [
 
 const data = [
     {
-        key: "1",
-        name: "FED",
-        message: "MESSAGE"
+        name: "Name",
+        message: "Message",
     },
     {
-        key: "2",
-        name: 'Jim Green',
-        message: 'London No. 1 Lake Park',
+        name: 'Fed',
+        message: 'How are you?',
     },
 ];
 
 
 const { Header, Content, Footer } = Layout;
-const { TextArea } = Input;
 
 
 
@@ -113,5 +111,6 @@ export default class CastomLayout extends Component {
     )
   }
 }
+
 
 

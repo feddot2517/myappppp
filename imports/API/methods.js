@@ -7,15 +7,12 @@ Meteor.methods({
 });
 
 Meteor.methods({
-    'addMessage'(userName, userMessage ) {
+    'addMessage'(userName1  , userMessage1 ) {
         let usermessage = new Message({
-            userName: userName,
-            userMessage: userMessage,
-        })
+            Name: userName1,
+            Message: userMessage1,
+        });
+        usermessage.save();
     }
 });
-
-Meteor.methods({
-
-})
 
