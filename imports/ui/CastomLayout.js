@@ -30,13 +30,8 @@ export default class CastomLayout extends Component {
           </Menu>
 
         </Header>
-        <Content style={{padding: '0 50px'}}>
-          <Breadcrumb style={{margin: '16px 0'}}>
-            <Breadcrumb.Item>Chat</Breadcrumb.Item>
-          </Breadcrumb>
-
+        <Content style={{padding: 50}}>
           {this.props.children}
-
         </Content>
         <Footer style={{textAlign: 'center'}}>Created FED and JEKKA</Footer>
       </Layout>
