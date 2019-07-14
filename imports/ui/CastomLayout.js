@@ -103,6 +103,7 @@ export default class CastomLayout extends Component {
 
               {this.props.messages && this.props.messages.map((message,id) => (
                 <Card key={id}>
+                  <div style={{color: 'blue', fontSize: 'x-small', display:'inline-block', marginRight: 5}}>{message.createdAt.toLocaleTimeString()}: </div>
                   <div style={{color: message.color, display:'inline-block', marginRight: 10}}>{message.from}: </div>
                   <div style={{display:'inline-block'}}> {message.text}</div>
                 </Card>
