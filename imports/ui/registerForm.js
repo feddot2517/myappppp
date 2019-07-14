@@ -10,8 +10,9 @@ export default class AuthForm extends React.Component {
   };
 
   callback = ans => {
-
-    alert(ans ? ans : "Success")
+    if (ans) {
+        alert(ans);
+    }
 
   };
 
